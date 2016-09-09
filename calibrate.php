@@ -29,8 +29,8 @@
 
     .indicator {
         height:100%;
-        width: 30px;
-        background-color: #DDDDDD;
+        width: 50px;
+        background-color: #69F0AE;
 
     }
 
@@ -71,9 +71,6 @@
         visibility: hidden;
     }
 
-    #indicators {
-        visibility: hidden;
-    }
 
     #webgazerVideoFeed {
         visibility: hidden;
@@ -147,12 +144,17 @@
     }
 
 
+
 </style>
 
 
 
 
-
+<div id = "indicators">
+<div style = "padding-top:300px"><h3>Look left or right, hold that gaze.</h3></div>
+    <div id = "leftInd" class = "indicator">.</div>
+    <div id = "rightInd" class = "indicator">.</div>
+</div>
 
 
 
@@ -164,22 +166,18 @@
 <div class = "row">
     <h1 id = "attempts"></h1>
 </div>
-<div class = "row" style= "top:200px">
+<div id = "instructions" class = "row" style= "top:200px">
     <h3>Instructions</h3>
     <p>Click on the button to the left or right of the screen to continue. </p>
-
 </div>
-
-
 <a id = "calibrateDone"  class="btn btn-success btn-lg" href="main.php" role="button">Continue!!!</a>
-
 <a id = "calibrateA" class="calibrate btn btn-primary btn-lg" href="#" role="button">** A **</a>
 <a id = "calibrateB"  class="calibrate btn btn-success btn-lg" href="#" role="button">** B **</a>
-
 <script>
     /* Calibration Routine */
 var totalAttempts=10;
 var attempts = 0;
+$("#indicators").hide();
 $("#calibrateA").show();
 $("#calibrateB").hide();
 $("#calibrateDone").hide();
@@ -211,18 +209,22 @@ if (randomButton > 5)
   $("#calibrateA").css('top', newTop);
   $("#calibrateA").show(300);
   $("#calibrateB").hide(300);
+    $("#instructions").hide();
 }
 else {
    $("#calibrateA").hide(300);
  $("#calibrateB").css('top', newTop);
   $("#calibrateB").show(300);
+   $("#instructions").hide();
 }
 
  if (attempts > totalAttempts) {
         $("#calibrateA").hide();
        $("#calibrateB").hide();
         $("#overlay").hide();
-       $("#calibrateDone").show(500);
+        console.log("ALLDONE");
+          $("#attempts").hide();
+       $("#indicators").show();
     }
 
 attempts++;
@@ -251,7 +253,7 @@ var iteration = 0;
         cpx = movingAverage(cpx,data.x);
         if (iteration > 10)
         {
-         //   console.log ("Tick: " + tick + " CPX: " + cpx);
+            console.log ("Tick: " + tick + " CPX: " + cpx);
             iteration = 0;
         }
         //console.log (iteration);
@@ -273,7 +275,7 @@ var iteration = 0;
         var cl = webgazer.getTracker().clm;
 
 
-        var cl = webgazer.getTracker().clm;
+      //  var cl = webgazer.getTracker().clm;
 
 
 
