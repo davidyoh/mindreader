@@ -17,6 +17,16 @@
 
   <script>
 
+//moving average stuff
+//
+var movingIterations = 20;
+var xPredictions = [];
+for (var i = 0; i < movingIterations; i++) 
+{
+  xPredictions.push([i,0]);
+}
+
+
   window.onload = function() {
 
     var localstorageLabel = 'webgazerGlobalData';
@@ -26,6 +36,7 @@
     .setTracker('clmtrackr')
     .setGazeListener(function(data, clock) {
          //console.log(data); 
+         
          if(!data)
           return;
         root.px = data.x;

@@ -101,13 +101,6 @@
    <script src="movingAverage.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<div id = "intro">
-<h3>Please be seated in a well-lit environment.</h3>
-<div class = "calibrateButton" id = "buttonRight"><h1><a id = "rightLink">Click Here</a></h1></div>
-<div class = "calibrateButton" id = "buttonLeft"><h1><a id = "leftLink">Click Here</a></h1></div>
-
-
-</div>
 
 
 
