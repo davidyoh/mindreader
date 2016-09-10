@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Lazy Tinder</title>
+    <title>Lazy Eye - by David oh</title>
 
 
 
@@ -43,8 +43,8 @@
         <p>Instructions and Requirements:</p>
         <ul>
           <li>Webcam. Firefox, Chrome, or Opera Desktop Browser</li>
-          <li>Please have your face be positioned in the middle of your webcam view. Your face should show up in green.
-          <li>Please sit in a chair and not move around too much :)</li>
+          <li>Please have your face be positioned in the middle of your webcam view. An outline of your face should show up in green.
+          <li>Please sit in a chair and not move around too much :) - David O.</li>
         </ul>
             <p><a class="btn btn-primary btn-lg" href="calibrate.php" role="button">Start &raquo;</a></p>
         </div>
