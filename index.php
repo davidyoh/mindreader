@@ -43,6 +43,7 @@
         <p>Instructions and Requirements:</p>
         <ul>
           <li>Webcam. Firefox, Chrome, or Opera Desktop Browser</li>
+          <li>Use FULL screen mode. Allow webcam access. Your face should show up on the right.</li>
           <li>Please have your face be positioned in the middle of your webcam view. An outline of your face should show up in green.
           <li>Please sit in a chair and not move around too much :) - David O.</li>
         </ul>
