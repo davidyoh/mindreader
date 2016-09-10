@@ -46,6 +46,7 @@
           <li>Use FULL screen mode. Allow webcam access. Your face should show up on the right.</li>
           <li>Please have your face be positioned in the middle of your webcam view. An outline of your face should show up in green.
           <li>Please sit in a chair and not move around too much :) - David O.</li>
+          <li>DON"T turn your head.. just look at the buttons and click on it.</li>
           <li>Credits to <a href = "https://webgazer.cs.brown.edu/">Webgazer</a></li>
         </ul>
             <p><a class="btn btn-primary btn-lg" href="calibrate.php" role="button">Start &raquo;</a></p>
