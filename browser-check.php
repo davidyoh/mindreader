@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Lazy Eye - by David oh</title>
 
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
 
     <!-- Bootstrap -->
    <!-- Latest compiled and minified CSS -->
@@ -54,56 +54,55 @@
 
   }
 
+  #devicepercent {
+
+    width: 100%;
+    text-align: center;
+    vertical-align: center;
+    height: 100px;
+  }
+
+  .progress-bar {
+    padding: 20px;
+font-size: 40px;
+
+  }
+
+  .progress {
+    height: 100px;
+    vertical-align: center;
+  }
+
 </style>
 
 <body>
  <script src="webgazer.js"></script>
 
 
- <div class="jumbotron introscreen">
-      <div class="container">
-
-      <div class = "row">
-        <div class = "col-md-12"> <h1>Lazy Lazy</h1>
-        <p>Instructions and Requirements:</p>
-            <ul>
-               <li class = "instructiontext"><h4>This demo requires a webcam,</h4></li>
-              <li class = "instructiontext"><h4>.. and Firefox, Chrome, or Safari browser on your <b>desktop</b> or <b>laptop</b>.</h4></li>
-              <li class = "instructiontext">Please have your face be positioned in the middle of your webcam view. An outline of your face should show up in green.</li>
-
-
-            </ul>
-
-        </div>
-        </div>
-
-
- <div class="container">
-      <div class = "row">
-            <div class = "col-md-6"> <img src = "resource/adjust.png"/>  </div>
-       <div id = "intro" class = "col-md-6">
-
-            <div class = "centerbox"><div class = "facetext">PLACE YOUR FACE HERE.</div></div>
-            </div>
-    </div>
-
+ <div class = "container">
+ <div class = "row"><h3>Please check that your browser width is more than 70% of your screen. (It's better if you make it full screen).</h3>
+<img src = "resource/browsersize.png" class = "center-block"/>
+ </div>
 <div class = "row">
-  <div class = "col-md-8"></div>
-  <div class = "col-md-4">
-      <p><a class="btn btn-primary btn-lg" href="browser-check.php" role="button">Continue... &raquo;</a></p>
+
+  <div class = "col-md-12">
+
+    <div class="progress">
+  <div class="progress-bar" id = "browsersize" role="progressbar" aria-valuenow="100%" aria-valuemin="0" aria-valuemax="100" style="">
 
   </div>
 
+
+
+
 </div>
+
+ <p><a class="btn btn-primary btn-lg" href="calibrate.php" role="button">Continue... &raquo;</a></p>
+
+  </div>
 </div>
 
-
-
-
-
-      </div>
-    </div>
-
+ </div>
 
    <script>
 window.onload = function() {
@@ -126,7 +125,7 @@ window.onload = function() {
 
     var setup = function() {
         var video = document.getElementById('webgazerVideoFeed');
-        video.style.display = 'block';
+        video.style.display = 'none';
         video.style.position = 'absolute';
         video.style.top = topDist;
         video.style.left = leftDist;
@@ -136,13 +135,7 @@ window.onload = function() {
 
         video.style.zIndex="-1";
 
-
-
-
         video.style.WebkitFilter = "grayscale(100%) blur(10px) brightness(200%)";
-
-     //video.style.cssText = "-moz-transform: scale(-1, 1); -webkit-transform: scale(-1, 1); -o-transform: scale(-1, 1); transform: scale(-1, 1); filter: FlipH;";
-
 
 
 
@@ -179,7 +172,9 @@ window.onload = function() {
 
     function checkIfReady() {
         if (webgazer.isReady()) {
+            showViewportSize();
             setup();
+            $(window).resize(showViewportSize);
         } else {
             setTimeout(checkIfReady, 100);
         }
@@ -188,11 +183,40 @@ window.onload = function() {
 };
 
 
+function showViewportSize() {
+   var the_width = $(window).width();
+   var the_height = $(window).height();
+   var device_width = window.screen.width;
+   $('#width').html(the_width);
+   $('#devicewidth').html(device_width);
+   var device_percent = Math.round((the_width/device_width)*100);
+   console.log(device_percent);
+   if (device_percent>70) {
+    $("#browsersize").removeClass("progress-bar-danger");
+     $("#browsersize").addClass("progress-bar-success");
+   }
+   else {
+       $("#browsersize").removeClass("progress-bar-success");
+       $("#browsersize").addClass("progress-bar-danger");
+   }
+   $('.progress-bar').html(device_percent + "%");
+
+$('.progress-bar').css('width', device_percent+'%').attr('aria-valuenow', device_percent);
+
+
+
+}
+
+
+
+
 window.onbeforeunload = function() {
     webgazer.end(); //Uncomment if you want to save the data even if you reload the page.
     //window.localStorage.clear(); //Comment out if you want to save data across different sessions
 }
         </script>
+
+
 
 
 

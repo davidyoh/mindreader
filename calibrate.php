@@ -49,6 +49,15 @@
         display: block;
     }
 
+
+     #middleInd {
+        top: 0px;
+        left: 50%;
+        position: fixed;
+        display: block;
+    }
+
+
       #buttonLeft {
         top: 0px;
         left: 0px;
@@ -153,6 +162,7 @@
 <div id = "indicators">
 <div style = "padding-top:300px"><h3>Look left or right, hold that gaze.</h3></div>
     <div id = "leftInd" class = "indicator">.</div>
+      <div id = "middleInd" class = "indicator">.</div>
     <div id = "rightInd" class = "indicator">.</div>
 </div>
 
@@ -167,16 +177,18 @@
     <h1 id = "attempts"></h1>
 </div>
 <div id = "instructions" class = "row" style= "top:200px">
-    <h3>Instructions</h3>
-    <p>Click on the button to the left or right of the screen to continue. </p>
+    <h2>Instructions</h2>
+    <h3>We are now going to calibrate our sensing routine. <em>Without moving your head</em>, please look to the left or right to click on the button.</h3>
+    <h3>Click on the button to the left or right of the screen to continue. </h3>
 </div>
 <a id = "calibrateDone"  class="btn btn-success btn-lg" href="main.php" role="button">Continue!!!</a>
 <a id = "calibrateA" class="calibrate btn btn-primary btn-lg" href="#" role="button">** A **</a>
 <a id = "calibrateB"  class="calibrate btn btn-success btn-lg" href="#" role="button">** B **</a>
 <script>
     /* Calibration Routine */
-var totalAttempts=10;
+var totalAttempts=6;
 var attempts = 0;
+var lastattempt = 0;
 $("#indicators").hide();
 $("#calibrateA").show();
 $("#calibrateB").hide();
@@ -192,9 +204,9 @@ $("#calibrateA").hide();
 $("#calibrateB").hide();
 
 
-var randomButton = Math.floor((Math.random() * 10) + 1);
 
-console.log ("Rand:" + randomButton);
+
+//console.log ("Rand:" + randomButton);
 
 var min = 100;
 var max = $(window).height()-200;
@@ -204,18 +216,20 @@ var newTop = Math.floor(Math.random() * (max - min + 1)) + min + "px";
 console.log (newTop);
 
 
-if (randomButton > 5)
+if (lastattempt == 0)
 {
   $("#calibrateA").css('top', newTop);
   $("#calibrateA").show(300);
   $("#calibrateB").hide(300);
     $("#instructions").hide();
+    lastattempt =1;
 }
 else {
    $("#calibrateA").hide(300);
  $("#calibrateB").css('top', newTop);
   $("#calibrateB").show(300);
    $("#instructions").hide();
+    lastattempt =0;
 }
 
  if (attempts > totalAttempts) {
@@ -260,15 +274,31 @@ var iteration = 0;
         iteration++;
         var cpy = data.y;
 
+        var totalwidth = window.innerWidth;
 
-        if (cpx > window.innerWidth/2) {
-            $("#leftInd").hide(500);
-            $("#rightInd").show(500);
-        }
 
-        else {
+        var width1 = (totalwidth/3);
+        var width2 = width1*2;
+
+
+        if (cpx < width1 && cpx > 0) {
             $("#leftInd").show(500);
             $("#rightInd").hide(500);
+           $("#middleInd").hide(500);
+        }
+
+
+
+        else if (cpx > width1 && cpx < width2){ //middle
+            $("#leftInd").hide(500);
+              $("#middleInd").show(500);
+            $("#rightInd").hide(500);
+        }
+
+        else if (cpx > width2 && cpx < totalwidth){
+            $("#leftInd").hide(500);
+              $("#middleInd").hide(500);
+            $("#rightInd").show(500);
         }
 
 
