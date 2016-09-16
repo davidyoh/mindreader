@@ -64,14 +64,14 @@
       <div class="container">
 
       <div class = "row">
-        <div class = "col-md-12"> <h1>Lazy Lazy</h1>
+        <div class = "col-md-12"> <h1>Lazy Lazy, by David Oh</h1>
         <p>Instructions and Requirements:</p>
             <ul>
                <li class = "instructiontext"><h4>This demo requires a webcam,</h4></li>
               <li class = "instructiontext"><h4>.. and Firefox, Chrome, or Safari browser on your <b>desktop</b> or <b>laptop</b>.</h4></li>
               <li class = "instructiontext">Please have your face be positioned in the middle of your webcam view. An outline of your face should show up in green.</li>
 
-
+              <li>Credit to WebGazer</li>
             </ul>
 
         </div>

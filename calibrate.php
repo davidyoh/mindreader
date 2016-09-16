@@ -291,7 +291,7 @@ var iteration = 0;
 
         else if (cpx > width1 && cpx < width2){ //middle
             $("#leftInd").hide(500);
-              $("#middleInd").show(500);
+             $("#middleInd").hide(500);
             $("#rightInd").hide(500);
         }
 
